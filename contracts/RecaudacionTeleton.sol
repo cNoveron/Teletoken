@@ -9,6 +9,6 @@ contract RecaudacionTeleton is Crowdsale {
     }
 
     function DonarTeletokens(uint256 cuantosTokens) public payable {
-        approve(msg.sender,cuantosTokens);
+        token.approve(msg.sender,cuantosTokens);
     }
 }
