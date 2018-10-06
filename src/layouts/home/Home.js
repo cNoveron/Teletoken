@@ -37,7 +37,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(AccountData)
     return (
       <main className="container">
         <div className="pure-g">
