@@ -1,5 +1,5 @@
 import TokenTeleton from './../build/contracts/TokenTeleton.json'
-import RecaudacionTeleton from './../build/contracts/RecaudacionTeleton.json'
+//import RecaudacionTeleton from './../build/contracts/RecaudacionTeleton.json'
 
 const drizzleOptions = {
   web3: {
@@ -11,7 +11,7 @@ const drizzleOptions = {
   },
   contracts: [
     TokenTeleton,
-    RecaudacionTeleton
+    //RecaudacionTeleton
   ],
   events: {
     SimpleStorage: ['StorageSet']

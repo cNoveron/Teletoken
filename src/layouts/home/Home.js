@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { AccountData, ContractData, ContractForm } from 'drizzle-react-components'
+import { AccountData, ContractData } from 'drizzle-react-components'
+//import ContractForm from 'drizzle-react-components'
 import logo from '../../logo.png'
 
 class Home extends Component {
@@ -29,7 +30,7 @@ class Home extends Component {
               <strong>totalSupply</strong>: 
               <ContractData 
                 contract="TokenTeleton" 
-                method="totalSupply" 
+                method="totalSupply"
                 />
             </p>
             <p>
@@ -37,13 +38,13 @@ class Home extends Component {
               <ContractData 
                 contract="TokenTeleton" 
                 method="balanceOf" 
-                methodArgs={[AccountData[0]]}
+                methodArgs={['0xC7e76e5f1D33BE441E890a7F2aCE9468f40345C7']}
                 />
             </p>
-            <ContractForm 
+            {/*<ContractForm 
               contract="RecaudacionTeleton" 
               method="AsignarTeletokens" 
-              />
+            />*/}
             <br/><br/>
           </div>
 
