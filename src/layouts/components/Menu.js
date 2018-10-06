@@ -6,11 +6,8 @@ class Menu extends Component {
           <nav id="nav-menu-container">
             <ul className="nav-menu">
               <li className="menu-active"><a href="#body">Home</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#team">Team</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#track">Seguir donativo</a></li>
+              <li><a href="https://www.teleton.org/" target="_blank" rel="noopener noreferrer">Donar</a></li>
             </ul>
           </nav>
         );

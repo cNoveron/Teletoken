@@ -7,7 +7,7 @@ class Carousel extends Component {
                 <div className="intro-content">
                     <h2>De corazón a corazón</h2>
                         <div>
-                            <a href="#about" className="btn-get-started scrollto">Doné</a>
+                            <a href="#track" className="btn-get-started scrollto">Rastrear</a>
                             <a href="#portfolio" className="btn-projects scrollto">Donar</a>
                         </div>
                 </div>

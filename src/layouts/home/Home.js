@@ -6,6 +6,7 @@ import logo from '../../logo.png'
 import TopBar from '../components/TopBar'
 import Header from '../components/Header'
 import Carousel from '../components/Carousel'
+import MainContent from '../components/MainContent'
 import BackToTop from '../components/BackToTop'
 import Footer from '../components/Footer'
 
@@ -16,6 +17,7 @@ class Home extends Component {
         <TopBar />
         <Header />
         <Carousel />
+        <MainContent />
         <Footer />
         <BackToTop />
 
