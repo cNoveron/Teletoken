@@ -16,6 +16,7 @@ class Home extends Component {
   }
   
   changeIndex(event) {
+    if(event.target.value < 10)
     this.setState({
       currentAccount: {
         index: event.target.value,
