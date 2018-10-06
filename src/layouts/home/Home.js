@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { AccountData, ContractData } from 'drizzle-react-components'
-//import ContractForm from 'drizzle-react-components'
+import { AccountData, ContractData, ContractForm } from 'drizzle-react-components'
 import logo from '../../logo.png'
 
 class Home extends Component {  
@@ -17,7 +16,6 @@ class Home extends Component {
   }
   
   changeIndex(event) {
-    console.log(event.target)
     this.setState({
       currentAccount: {
         index: event.target.value,
@@ -27,7 +25,6 @@ class Home extends Component {
   }
   
   updateAddress(event) {
-    console.log(event.target)
     this.setState(prevState => ({
       currentAccount: {
         ...prevState,
@@ -82,10 +79,10 @@ class Home extends Component {
                 methodArgs={[this.state.currentAccount.address]}
                 />
             </p>
-            {/*<ContractForm 
+            <ContractForm 
               contract="TokenTeleton" 
-              method="transfer" 
-            />*/}
+              method="transfer"
+            />
             <br/><br/>
           </div>
 
