@@ -3,8 +3,41 @@ import { AccountData, ContractData } from 'drizzle-react-components'
 //import ContractForm from 'drizzle-react-components'
 import logo from '../../logo.png'
 
-class Home extends Component {
+class Home extends Component {  
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentAccount: {
+        index: 0,
+        address: '',
+      }
+    }
+    this.changeIndex = this.changeIndex.bind(this);
+    this.updateAddress = this.updateAddress.bind(this);
+  }
+  
+  changeIndex(event) {
+    console.log(event.target)
+    this.setState({
+      currentAccount: {
+        index: event.target.value,
+        address: '',
+      }
+    })
+  }
+  
+  updateAddress(event) {
+    console.log(event.target)
+    this.setState(prevState => ({
+      currentAccount: {
+        ...prevState,
+        address: event.target.value,
+      }
+    }))
+  }
+
   render() {
+    console.log(AccountData)
     return (
       <main className="container">
         <div className="pure-g">
@@ -18,8 +51,17 @@ class Home extends Component {
 
           <div className="pure-u-1-1">
             <h2>Cuenta actual</h2>
-            <AccountData accountIndex="0" units="ether" precision="3" />
-
+            <AccountData 
+              accountIndex={""+this.state.currentAccount.index}  
+              units="ether" 
+              precision="3"
+              onChange={this.updateAddress} 
+            />
+            <input 
+              type="text" 
+              value={this.state.currentAccount.index} 
+              onChange={this.changeIndex} 
+            />
             <br/><br/>
           </div>
 
@@ -38,12 +80,12 @@ class Home extends Component {
               <ContractData 
                 contract="TokenTeleton" 
                 method="balanceOf" 
-                methodArgs={['0xC7e76e5f1D33BE441E890a7F2aCE9468f40345C7']}
+                methodArgs={[this.state.currentAccount.address]}
                 />
             </p>
             {/*<ContractForm 
-              contract="RecaudacionTeleton" 
-              method="AsignarTeletokens" 
+              contract="TokenTeleton" 
+              method="transfer" 
             />*/}
             <br/><br/>
           </div>
