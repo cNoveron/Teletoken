@@ -11,6 +11,6 @@ contract TokenTeleton is StandardToken, Ownable {
   
   constructor() public {
     totalSupply_ = oferta_total;
-    balances[msg.sender] = oferta_total;
+    balances[owner] = oferta_total;
   }
 }
