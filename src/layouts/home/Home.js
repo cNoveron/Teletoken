@@ -59,7 +59,7 @@ class Home extends Component {
               value={this.state.currentAccount.index} 
               onChange={this.changeIndex} 
             />
-            <br/><br/>
+          <br/><br/>
           </div>
 
           <div className="pure-u-1-1">
@@ -72,21 +72,53 @@ class Home extends Component {
                 method="totalSupply"
                 />
             </p>
+            <br/><br/>
+            <strong>approve</strong>: <br/>
+            <ContractForm 
+              contract="TokenTeleton" 
+              method="approve"
+            />
+            <br/><br/>
+            <strong>transferFrom</strong>: <br/>
+            <ContractForm 
+              contract="TokenTeleton" 
+              method="transferFrom"
+            />
             <p>
-              <strong>balanceOf</strong>: 
+              <strong>balanceOf</strong>: {this.state.currentAccount.address}<br/>
               <ContractData 
                 contract="TokenTeleton" 
                 method="balanceOf" 
                 methodArgs={[this.state.currentAccount.address]}
-                />
+              />
+              <ContractData 
+                contract="TokenTeleton" 
+                method="denominacion"
+              />
             </p>
-            <ContractForm 
-              contract="TokenTeleton" 
-              method="transfer"
-            />
-            <br/><br/>
+          <br/><br/>
           </div>
 
+          <div className="pure-u-1-1">
+            <strong>buyTokens</strong>: <br/>
+            <ContractForm 
+              contract="RecaudacionTeleton" 
+              method="buyTokens"
+              sendArgs={{from:this.state.currentAccount.address,value:100}}
+            />
+            <p>
+              <strong>balanceOf</strong>: <br/>
+              <ContractData 
+                contract="TokenTeleton" 
+                method="balanceOf" 
+                methodArgs={[this.state.currentAccount.address]}
+              />
+              <ContractData 
+                contract="TokenTeleton" 
+                method="denominacion"
+              />
+            </p>
+          </div>
         </div>
       </main>
     )

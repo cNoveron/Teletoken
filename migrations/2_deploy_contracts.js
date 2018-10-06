@@ -1,7 +1,15 @@
 var TokenTeleton = artifacts.require("TokenTeleton");
-//var RecaudacionTeleton = artifacts.require("RecaudacionTeleton");
+var RecaudacionTeleton = artifacts.require("RecaudacionTeleton");
 
 module.exports = function(deployer, network, accounts) {
-  deployer.deploy(TokenTeleton);
-  //deployer.deploy(RecaudacionTeleton,{gas: 99999999999999, from: accounts[0]});
+  deployer.deploy(TokenTeleton)
+  .then(function(TokenTeleton_deployed){
+    return deployer.deploy(
+      RecaudacionTeleton,
+      1,
+      accounts[0],
+      TokenTeleton_deployed.address,
+    )
+  })
+  
 };
