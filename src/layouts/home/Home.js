@@ -3,6 +3,13 @@ import { AccountData, ContractData } from 'drizzle-react-components'
 //import ContractForm from 'drizzle-react-components'
 import logo from '../../logo.png'
 
+import TopBar from '../components/TopBar'
+import Header from '../components/Header'
+import Carousel from '../components/Carousel'
+import MainContent from '../components/MainContent'
+import BackToTop from '../components/BackToTop'
+import Footer from '../components/Footer'
+
 class Home extends Component {  
   constructor(props) {
     super(props);
@@ -39,17 +46,15 @@ class Home extends Component {
   render() {
     console.log(AccountData)
     return (
-      <main className="container">
-        <div className="pure-g">
-          <div className="pure-u-1-1 header">
-            <img src={logo} alt="drizzle-logo" />
-            <h1>Teletoken</h1>
-            <p>Cómo rastrear donaciones con Tokens ERC20 de Ethereum.</p>
+      <div>
+        <TopBar />
+        <Header />
+        <Carousel />
+        <MainContent />
+        <Footer />
+        <BackToTop />
 
-            <br/><br/>
-          </div>
-
-          <div className="pure-u-1-1">
+        <div className="pure-u-1-1">
             <h2>Cuenta actual</h2>
             <AccountData 
               accountIndex={""+this.state.currentAccount.index}  
@@ -89,9 +94,7 @@ class Home extends Component {
             />*/}
             <br/><br/>
           </div>
-
-        </div>
-      </main>
+      </div>
     )
   }
 }
