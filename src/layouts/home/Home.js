@@ -53,6 +53,47 @@ class Home extends Component {
         <MainContent />
         <Footer />
         <BackToTop />
+
+        <div className="pure-u-1-1">
+            <h2>Cuenta actual</h2>
+            <AccountData 
+              accountIndex={""+this.state.currentAccount.index}  
+              units="ether" 
+              precision="3"
+              onChange={this.updateAddress} 
+            />
+            <input 
+              type="text" 
+              value={this.state.currentAccount.index} 
+              onChange={this.changeIndex} 
+            />
+            <br/><br/>
+          </div>
+
+          <div className="pure-u-1-1">
+            <h2>Smart Contract</h2>
+            <p>Funciones principales.</p>
+            <p>
+              <strong>totalSupply</strong>: 
+              <ContractData 
+                contract="TokenTeleton" 
+                method="totalSupply"
+                />
+            </p>
+            <p>
+              <strong>balanceOf</strong>: 
+              <ContractData 
+                contract="TokenTeleton" 
+                method="balanceOf" 
+                methodArgs={[this.state.currentAccount.address]}
+                />
+            </p>
+            {/*<ContractForm 
+              contract="TokenTeleton" 
+              method="transfer" 
+            />*/}
+            <br/><br/>
+          </div>
       </div>
     )
   }
