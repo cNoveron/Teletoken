@@ -10,8 +10,41 @@ import MainContent from '../components/MainContent'
 import BackToTop from '../components/BackToTop'
 import Footer from '../components/Footer'
 
-class Home extends Component {
+class Home extends Component {  
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentAccount: {
+        index: 0,
+        address: '',
+      }
+    }
+    this.changeIndex = this.changeIndex.bind(this);
+    this.updateAddress = this.updateAddress.bind(this);
+  }
+  
+  changeIndex(event) {
+    console.log(event.target)
+    this.setState({
+      currentAccount: {
+        index: event.target.value,
+        address: '',
+      }
+    })
+  }
+  
+  updateAddress(event) {
+    console.log(event.target)
+    this.setState(prevState => ({
+      currentAccount: {
+        ...prevState,
+        address: event.target.value,
+      }
+    }))
+  }
+
   render() {
+    console.log(AccountData)
     return (
       <div>
         <TopBar />
@@ -20,51 +53,6 @@ class Home extends Component {
         <MainContent />
         <Footer />
         <BackToTop />
-
-        <main className="container">
-          <div className="pure-g">
-            <div className="pure-u-1-1 header">
-              <img src={logo} alt="drizzle-logo" />
-              <h1>Teletoken</h1>
-              <p>Cómo rastrear donaciones con Tokens ERC20 de Ethereum.</p>
-
-              <br/><br/>
-            </div>
-
-            <div className="pure-u-1-1">
-              <h2>Cuenta actual</h2>
-              <AccountData accountIndex="0" units="ether" precision="3" />
-
-              <br/><br/>
-            </div>
-
-            <div className="pure-u-1-1">
-              <h2>Smart Contract</h2>
-              <p>Funciones principales.</p>
-              <p>
-                <strong>totalSupply</strong>: 
-                <ContractData 
-                  contract="TokenTeleton" 
-                  method="totalSupply"
-                  />
-              </p>
-              <p>
-                <strong>balanceOf</strong>: 
-                <ContractData 
-                  contract="TokenTeleton" 
-                  method="balanceOf" 
-                  methodArgs={['0xC7e76e5f1D33BE441E890a7F2aCE9468f40345C7']}
-                  />
-              </p>
-              {/*<ContractForm 
-                contract="RecaudacionTeleton" 
-                method="AsignarTeletokens" 
-              />*/}
-              <br/><br/>
-            </div>
-
-          </div>
-        </main>
       </div>
     )
   }
