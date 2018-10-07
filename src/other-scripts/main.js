@@ -89,4 +89,5 @@
       }
     }
   });
+  
 })(window.jQuery, window.location);

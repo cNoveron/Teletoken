@@ -1,9 +1,33 @@
 import React, { Component } from 'react'
 
+import { withStyles } from '@material-ui/core/styles';
+
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { DateFormatInput } from 'material-ui-next-pickers'
+
+const styles = theme => ({
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    formControl: {
+        margin: theme.spacing.unit,
+        minWidth: 120,
+        width: '100%',
+        backgrounColor: 'red'
+    },
+    selectEmpty: {
+        marginTop: theme.spacing.unit * 2,
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 200,
+    },
+});
 
 class Track extends Component {
     constructor(props) {
@@ -23,19 +47,28 @@ class Track extends Component {
             { id: 17, label: 'Donativo en Teleton.org' },
         ]
         this.state = {
-            type: ''
+            type: '',
+            date: ''
         }
     }
+
+    handleChange = event => {
+        console.log('event.target', event.target)
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+    setDate = (date) => this.setState({ date })
+
     render() {
-        const { type } = this.state
+        const { type, date } = this.state
         return (
             <section id="track" className="wow fadeInUp">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <h1>Rastrear donativos</h1>
+                            <h1>Monitorear mi donativo</h1>
                             <form autoComplete="off">
-                                <FormControl>
+                                <FormControl className="select-type">
                                     <InputLabel htmlFor="donation-type">Medio de donación:</InputLabel>
                                     <Select
                                         value={type}
@@ -44,18 +77,27 @@ class Track extends Component {
                                             name: 'type',
                                             id: 'donation-type',
                                         }}
+                                        className=""
                                     >
                                         <MenuItem value="">
                                             <em>- Seleccione</em>
                                         </MenuItem>
                                         {this.types.map(function (item) {
-                                            return <MenuItem value={item.id}>{item.label}</MenuItem>
+                                            return <MenuItem key={item.id} value={item.id}>{item.label}</MenuItem>
                                         })}
-                                        <MenuItem value={10}>Ten</MenuItem>
-                                        <MenuItem value={20}>Twenty</MenuItem>
-                                        <MenuItem value={30}>Thirty</MenuItem>
                                     </Select>
                                 </FormControl>
+
+                                <hr />
+
+                                {type && (
+                                    <FormControl className="select-type">
+                                        <InputLabel htmlFor="date-input" id="date-input">Fecha:</InputLabel>
+                                        <DateFormatInput name="date-input" 
+                                            value={date} 
+                                            onChange={this.setDate} />
+                                    </FormControl>
+                                )}
                             </form>
                         </div>
                     </div>
@@ -64,4 +106,4 @@ class Track extends Component {
         );
     }
 }
-export default Track
+export default withStyles(styles)(Track);
