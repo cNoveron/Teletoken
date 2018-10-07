@@ -2,6 +2,13 @@ import React, { Component } from 'react'
 import { AccountData, ContractData, ContractForm } from 'drizzle-react-components'
 import logo from '../../logo.png'
 
+import TopBar from '../components/TopBar'
+import Header from '../components/Header'
+import Carousel from '../components/Carousel'
+import MainContent from '../components/MainContent'
+import BackToTop from '../components/BackToTop'
+import Footer from '../components/Footer'
+
 class Home extends Component {  
   constructor(props) {
     super(props);
@@ -36,70 +43,68 @@ class Home extends Component {
 
   render() {
     return (
-      <main className="container">
-        <div className="pure-g">
-          <div className="pure-u-1-1 header">
-            <img src={logo} alt="drizzle-logo" />
-            <h1>Teletoken</h1>
-            <p>Cómo rastrear donaciones con Tokens ERC20 de Ethereum.</p>
+      <div>
+        <TopBar />
+        <Header />
+        <Carousel />
+        <MainContent />
+        <Footer />
+        <BackToTop />
 
-            <br/><br/>
-          </div>
+        <div className="pure-u-1-1">
+          <h2>Cuenta actual</h2>
+          <AccountData 
+            accountIndex={""+this.state.currentAccount.index}  
+            units="ether" 
+            precision="3"
+            onChange={this.updateAddress} 
+          />
+          <input 
+            type="text" 
+            value={this.state.currentAccount.index} 
+            onChange={this.changeIndex} 
+          />
+        <br/><br/>
+        </div>
 
-          <div className="pure-u-1-1">
-            <h2>Cuenta actual</h2>
-            <AccountData 
-              accountIndex={""+this.state.currentAccount.index}  
-              units="ether" 
-              precision="3"
-              onChange={this.updateAddress} 
-            />
-            <input 
-              type="text" 
-              value={this.state.currentAccount.index} 
-              onChange={this.changeIndex} 
-            />
-          <br/><br/>
-          </div>
-
-          <div className="pure-u-1-1">
-            <h2>Smart Contract</h2>
-            <p>Funciones principales.</p>
-            <p>
-              <strong>totalSupply</strong>: 
-              <ContractData 
-                contract="TokenTeleton" 
-                method="totalSupply"
-                />
-            </p>
-            <br/><br/>
-            <strong>approve</strong>: <br/>
-            <ContractForm 
+        <div className="pure-u-1-1">
+          <h2>Smart Contract</h2>
+          <p>Funciones principales.</p>
+          <p>
+            <strong>totalSupply</strong>: 
+            <ContractData 
               contract="TokenTeleton" 
-              method="approve"
-            />
-            <br/><br/>
-            <strong>transferFrom</strong>: <br/>
-            <ContractForm 
-              contract="TokenTeleton" 
-              method="transferFrom"
-            />
-            <p>
-              <strong>balanceOf</strong>: {this.state.currentAccount.address}<br/>
-              <ContractData 
-                contract="TokenTeleton" 
-                method="balanceOf" 
-                methodArgs={[this.state.currentAccount.address]}
+              method="totalSupply"
               />
-              <ContractData 
-                contract="TokenTeleton" 
-                method="denominacion"
-              />
-            </p>
+          </p>
           <br/><br/>
-          </div>
+          <strong>approve</strong>: <br/>
+          <ContractForm 
+            contract="TokenTeleton" 
+            method="approve"
+          />
+          <br/><br/>
+          <strong>transferFrom</strong>: <br/>
+          <ContractForm 
+            contract="TokenTeleton" 
+            method="transferFrom"
+          />
+          <p>
+            <strong>balanceOf</strong>: {this.state.currentAccount.address}<br/>
+            <ContractData 
+              contract="TokenTeleton" 
+              method="balanceOf" 
+              methodArgs={[this.state.currentAccount.address]}
+            />
+            <ContractData 
+              contract="TokenTeleton" 
+              method="denominacion"
+            />
+          </p>
+        <br/><br/>
+        </div>
 
-          <div className="pure-u-1-1">
+        <div className="pure-u-1-1">
             <strong>buyTokens</strong>: <br/>
             <ContractForm 
               contract="RecaudacionTeleton" 
@@ -119,8 +124,8 @@ class Home extends Component {
               />
             </p>
           </div>
-        </div>
-      </main>
+        
+      </div>
     )
   }
 }
