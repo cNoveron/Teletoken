@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { AccountData, ContractData } from 'drizzle-react-components'
 //import ContractForm from 'drizzle-react-components'
-import logo from '../../logo.png'
 
 import TopBar from '../components/TopBar'
 import Header from '../components/Header'

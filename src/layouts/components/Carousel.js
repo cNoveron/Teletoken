@@ -7,8 +7,8 @@ class Carousel extends Component {
                 <div className="intro-content">
                     <h2>De corazón a corazón</h2>
                         <div>
-                            <a href="#track" className="btn-get-started scrollto">Rastrear</a>
-                            <a href="#portfolio" className="btn-projects scrollto">Donar</a>
+                            <a href="#track" className="btn-get-started scrollto">Monitorear</a>
+                            <a href="https://www.teleton.org/" target="_blank" rel="noopener noreferrer" className="btn-projects scrollto">Donar</a>
                         </div>
                 </div>
                 <div id="intro-carousel" className="owl-carousel" >
