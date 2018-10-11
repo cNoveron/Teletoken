@@ -44,7 +44,7 @@ class Home extends Component {
               precision="3"
             />
             <input 
-              type="text" 
+              type="number" 
               value={this.state.currentAccount.index} 
               onChange={this.changeIndex} 
             />
