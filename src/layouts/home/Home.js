@@ -12,7 +12,6 @@ class Home extends Component {
       }
     }
     this.changeIndex = this.changeIndex.bind(this);
-    this.updateAddress = this.updateAddress.bind(this);
   }
   
   changeIndex(event) {
@@ -20,20 +19,11 @@ class Home extends Component {
     this.setState({
       currentAccount: {
         index: event.target.value,
-        address: '',
+        address: this.props.accounts[event.target.value],
       }
     })
   }
   
-  updateAddress(event) {
-    this.setState(prevState => ({
-      currentAccount: {
-        ...prevState,
-        address: event.target.value,
-      }
-    }))
-  }
-
   render() {
     return (
       <main className="container">
@@ -52,7 +42,6 @@ class Home extends Component {
               accountIndex={""+this.state.currentAccount.index}  
               units="ether" 
               precision="3"
-              onChange={this.updateAddress} 
             />
             <input 
               type="text" 
