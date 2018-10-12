@@ -8,7 +8,7 @@ class Home extends Component {
     this.state = {
       currentAccount: {
         index: 0,
-        address: '',
+        address: this.props.accounts[0],
       }
     }
     this.changeIndex = this.changeIndex.bind(this);
